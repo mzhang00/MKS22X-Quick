@@ -35,6 +35,10 @@ public class Quick{
     return start;
   }
 
+  public static int quickselect(int[] data, int k){
+    return 1;
+  }
+
   public static void main(String[] args){
     //int[] test =  {0, 1, 2, 3, 4, 5, 6, 7, 8,9};
     int[] test = {17, 61, 67, 47, 93, 12, 20, 4, 44, 68};
