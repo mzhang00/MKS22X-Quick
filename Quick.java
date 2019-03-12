@@ -36,11 +36,19 @@ public class Quick{
   }
 
   public static int quickselect(int[] data, int k){
-    return 1;
+    if (partition(data, 0, data.length - 1) == k){
+      return data[k];
+    }
+    return quickselect(data, k);
   }
 
   public static void main(String[] args){
     //int[] test =  {0, 1, 2, 3, 4, 5, 6, 7, 8,9};
+    
+    
+    //partition testing is below
+    /*
+
     int[] test = {17, 61, 67, 47, 93, 12, 20, 4, 44, 68};
     for (int i : test){
       System.out.print ("" + i + " ");
@@ -53,6 +61,9 @@ public class Quick{
       System.out.print ("" + i + " ");
     }
     System.out.println();
+
+    */
+
     //for (int i : test){
     //  System.out.print ("" + i + " ");
     //}
