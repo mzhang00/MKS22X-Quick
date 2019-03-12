@@ -36,10 +36,23 @@ public class Quick{
   }
 
   public static int quickselect(int[] data, int k){
+    //int finalpivot = partition(data, 0, data.length - 1);
     if (partition(data, 0, data.length - 1) == k){
       return data[k];
     }
     return quickselect(data, k);
+    //return quickselectH(data, k, 0, data.length - 1);
+  }
+
+  private static int quickselectH(int[] data, int k, int start, int end){
+    int finalpivot = partition(data, start, end);
+    if (finalpivot == k){
+      return data[k];
+    }
+    if (finalpivot > k){
+      return quickselectH(data, k, finalpivot, data.length - 1);
+    }
+    return quickselectH(data, k, 0, finalpivot);
   }
 
   public static void main(String[] args){
@@ -67,5 +80,20 @@ public class Quick{
     //for (int i : test){
     //  System.out.print ("" + i + " ");
     //}
+    int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};  //sorted :  {0,2,5,10,15,23}
+    
+    
+    //@TODO: QUICKSELECT STILL DOESN'T WORK IF THERE ARE A LOT OF DUPLICATES
+    
+    //int[]ary = { 2, 10, 15, 23, 0,  5, 6 , 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
+    for (int i = 0; i < ary.length; i++){
+      System.out.println(quickselect( ary , i ));  
+    }
+    //System.out.println(quickselect( ary , 0 )); //would return 0
+    //System.out.println(quickselect( ary , 1 ));  //would return 2
+    //System.out.println(quickselect( ary , 2 ));  //would return 5
+    //System.out.println(quickselect( ary , 3 ));  //would return 10
+    //System.out.println(quickselect( ary , 4 ));  //would return 15
+    //System.out.println(quickselect( ary , 5 ));  //would return 23
   }
 }
