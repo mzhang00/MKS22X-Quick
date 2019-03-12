@@ -1,5 +1,45 @@
 public class Quick{
+
+  private static int median(int a, int b, int c){
+    int max = a;
+    int min = a;
+    if (b < min){
+      min = b;
+    }
+    if (c < min){
+      min = c;
+    }
+    if (b > max){
+      max = b;
+    }
+    if (c > max){
+      max = c;
+    }
+    return a + b + c - max - min;
+  }
+
   public static int partition(int[] data, int start, int end){
+    //System.out.println("" + median(3,1,1123));
+    //System.out.println("---------------------");
+
+
+    int first = data[start];
+    int last = data[end];
+    int middle = data[((end - start) / 2) + start];
+    int mediann = median(first, last, middle);
+
+    /*int pivot;
+
+    if (mediann == middle){
+      pivot = (end - start) / 2;
+    }else{
+      if (mediann == first){
+        pivot = start;
+      }else{
+        pivot = end;
+      }
+    }*/
+
     int pivot = (int)(Math.random() * ((end - start) + 1)) + start;
     //int pivot = 1;
 
@@ -57,8 +97,8 @@ public class Quick{
 
   public static void main(String[] args){
     //int[] test =  {0, 1, 2, 3, 4, 5, 6, 7, 8,9};
-    
-    
+
+
     //partition testing is below
     /*
 
@@ -80,14 +120,14 @@ public class Quick{
     //for (int i : test){
     //  System.out.print ("" + i + " ");
     //}
-    int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};  //sorted :  {0,2,5,10,15,23}
-    
-    
+    //int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};  //sorted :  {0,2,5,10,15,23}
+
+
     //@TODO: QUICKSELECT STILL DOESN'T WORK IF THERE ARE A LOT OF DUPLICATES
-    
-    //int[]ary = { 2, 10, 15, 23, 0,  5, 6 , 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
+
+    int[]ary = { 2, 10, 15, 23, 0,  5, 6 };//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
     for (int i = 0; i < ary.length; i++){
-      System.out.println(quickselect( ary , i ));  
+      System.out.println(quickselect( ary , i ));
     }
     //System.out.println(quickselect( ary , 0 )); //would return 0
     //System.out.println(quickselect( ary , 1 ));  //would return 2
