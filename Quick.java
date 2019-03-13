@@ -26,9 +26,9 @@ public class Quick{
     int first = data[start];
     int last = data[end];
     int middle = data[((end - start) / 2) + start];
-    int mediann = median(first, last, middle);
+    int median1 = median(first, last, middle);
 
-    /*int pivot;
+    int pivot;
 
     if (mediann == middle){
       pivot = (end - start) / 2;
@@ -38,9 +38,9 @@ public class Quick{
       }else{
         pivot = end;
       }
-    }*/
+    }
 
-    int pivot = (int)(Math.random() * ((end - start) + 1)) + start;
+    //int pivot = (int)(Math.random() * ((end - start) + 1)) + start;
     //int pivot = 1;
 
     int temp = data[start];
