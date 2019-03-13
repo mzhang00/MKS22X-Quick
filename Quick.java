@@ -26,10 +26,11 @@ public class Quick{
     int first = data[start];
     int last = data[end];
     int middle = data[((end - start) / 2) + start];
-    int median1 = median(first, last, middle);
+    int mediann = median(first, last, middle);
 
-    /*int pivot;
+    //int pivot;
 
+    /*
     if (mediann == middle){
       pivot = (end - start) / 2;
     }else{
@@ -38,7 +39,9 @@ public class Quick{
       }else{
         pivot = end;
       }
-    }*/
+    }
+    System.out.println("" + pivot);
+    */
 
     int pivot = (int)(Math.random() * ((end - start) + 1)) + start;
     //int pivot = 1;
@@ -120,12 +123,12 @@ public class Quick{
     //for (int i : test){
     //  System.out.print ("" + i + " ");
     //}
-    int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};  //sorted :  {0,2,5,10,15,23}
+    //int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};  //sorted :  {0,2,5,10,15,23}
 
 
     //@TODO: QUICKSELECT STILL DOESN'T WORK IF THERE ARE A LOT OF DUPLICATES
 
-    //int[]ary = { 2, 10, 15, 23, 0,  5, 6 };//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
+    int[]ary = { 2, 10, 15, 23, 0,  5, 6 };//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
     for (int i = 0; i < ary.length; i++){
       System.out.println(quickselect( ary , i ));
     }
