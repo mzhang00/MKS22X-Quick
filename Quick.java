@@ -128,6 +128,21 @@ public class Quick{
     return quickselectH(data, k, 0, finalpivot - 1);*/
   }
 
+  public static void quicksort(int[] data){
+    quicksortH(data, 0, data.length - 1, 0, data.length - 1);
+  }
+
+  private static void quicksortH(int[] data, int start, int end, int oldstart, int oldend){
+    if (start == end){
+      return;
+    }
+    if (start >= 0 && end <= data.length - 1){
+      int pivot = partition(data, start, end);
+      quicksortH(data, oldstart, pivot - 1, start, end);
+      quicksortH(data, pivot + 1, oldend, start, end);
+    }
+  }
+
   public static void main(String[] args){
     //int[] test =  {0, 1, 2, 3, 4, 5, 6, 7, 8,9};
 
@@ -163,24 +178,25 @@ public class Quick{
 
     //System.out.println("" + median(ary,0,((ary.length - 1) / 2),ary.length - 1));
 
-    /*
-    System.out.println("" + partition(ary,0,ary.length - 1));
+    
+    quicksort(ary);
     for (int i : ary){
       System.out.print ("" + i + " ");
     }
     System.out.println();
-    */
+    
 
     
     //int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
 
 
 
+    //quickselect testing is below
 
-
-    for (int i = 0; i < ary.length; i++){
+    /*for (int i = 0; i < ary.length; i++){
       System.out.println(quickselect( ary , i ));
     }
+    */
 /*
     System.out.println(quickselect( ary , 0 )); //would return
     System.out.println(quickselect( ary , 1 ));  //would return
