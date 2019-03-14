@@ -53,6 +53,14 @@ public class Quick{
     start++;
 
     while (start < end){
+      if (data[start] == data[oldpivot]){
+        if (Math.random() < 0.5){
+          temp = data[start];
+          data[start] = data[end];
+          data[end] = temp;
+          end--;
+        }
+      }
       if (data[start] > data[oldpivot]){
         temp = data[start];
         data[start] = data[end];
@@ -97,6 +105,19 @@ public class Quick{
 
   private static int quickselectH(int[] data, int k, int start, int end){
     int finalpivot = partition(data, start, end);
+    if (finalpivot == k){
+      return data[k];
+    }
+    if (finalpivot != k){
+      if (finalpivot > k){
+        end = finalpivot - 1;
+      }
+      if (finalpivot < k){
+        start = finalpivot + 1;
+      }
+    }
+    return quickselectH(data, k, start, end);
+/*
     //System.out.println("" + finalpivot);
     if (finalpivot == k){
       return data[k];
@@ -104,7 +125,7 @@ public class Quick{
     if (finalpivot < k){
       return quickselectH(data, k, finalpivot + 1, data.length - 1);
     }
-    return quickselectH(data, k, 0, finalpivot - 1);
+    return quickselectH(data, k, 0, finalpivot - 1);*/
   }
 
   public static void main(String[] args){
@@ -132,14 +153,13 @@ public class Quick{
     //for (int i : test){
     //  System.out.print ("" + i + " ");
     //}
-    //int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};  //sorted :  {0,2,5,10,15,23}
-
+    int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};  //sorted :  {0,2,5,10,15,23}
 
     //@TODO: QUICKSELECT STILL DOESN'T WORK IF THERE ARE A LOT OF DUPLICATES
 
     //int[] ary = { 2, 10, 15, 23, 0,  5, 6 , 1};//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
 
-    //int[] ary = {0,1, 2, 40, 5, 10 , 20, 9};
+    //int[] ary = {0,1, 2, 40, 5, 10 , 20, 9, 1, 1, 1, 1};
 
     //System.out.println("" + median(ary,0,((ary.length - 1) / 2),ary.length - 1));
 
@@ -152,7 +172,7 @@ public class Quick{
     */
 
     
-    int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
+    //int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
 
 
 
