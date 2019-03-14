@@ -17,6 +17,11 @@ public class Quick{
   }
 
   public static int partition(int[] data, int start, int end){
+    
+    if (start == end){
+      return start;
+    }
+
     //System.out.println("" + median(3,1,1123));
     //System.out.println("---------------------");
 
@@ -40,13 +45,15 @@ public class Quick{
     //int pivot = (int)(Math.random() * ((end - start) + 1)) + start;
     //int pivot = 1;
 
+    int oldpivot = start;
+
     int temp = data[start];
     data[start] = data[pivot];
     data[pivot] = temp;
     start++;
 
     while (start < end){
-      if (data[start] > data[0]){
+      if (data[start] > data[oldpivot]){
         temp = data[start];
         data[start] = data[end];
         data[end] = temp;
@@ -61,35 +68,43 @@ public class Quick{
       //System.out.println();
     }
 
-    if (data[0] < data[start]){
+    if (data[oldpivot] < data[start]){
       start--;
     }
 
     temp = data[start];
-    data[start] = data[0];
-    data[0] = temp;
+    data[start] = data[oldpivot];
+    data[oldpivot] = temp;
 
     return start;
   }
 
   public static int quickselect(int[] data, int k){
     //int finalpivot = partition(data, 0, data.length - 1);
+    
+    /*
+    
     if (partition(data, 0, data.length - 1) == k){
       return data[k];
     }
     return quickselect(data, k);
-    //return quickselectH(data, k, 0, data.length - 1);
+
+    */
+
+
+    return quickselectH(data, k, 0, data.length - 1);
   }
 
   private static int quickselectH(int[] data, int k, int start, int end){
     int finalpivot = partition(data, start, end);
+    //System.out.println("" + finalpivot);
     if (finalpivot == k){
       return data[k];
     }
-    if (finalpivot > k){
-      return quickselectH(data, k, finalpivot, data.length - 1);
+    if (finalpivot < k){
+      return quickselectH(data, k, finalpivot + 1, data.length - 1);
     }
-    return quickselectH(data, k, 0, finalpivot);
+    return quickselectH(data, k, 0, finalpivot - 1);
   }
 
   public static void main(String[] args){
@@ -97,15 +112,15 @@ public class Quick{
 
 
     //partition testing is below
-    /*
-
+    
+/*
     int[] test = {17, 61, 67, 47, 93, 12, 20, 4, 44, 68};
     for (int i : test){
       System.out.print ("" + i + " ");
     }
     System.out.println();
     System.out.println("------------------------------");
-    System.out.println(partition(test, 0, 9));
+    System.out.println(partition(test, 2, 9));
     System.out.println("------------------------------");
     for (int i : test){
       System.out.print ("" + i + " ");
@@ -122,7 +137,7 @@ public class Quick{
 
     //@TODO: QUICKSELECT STILL DOESN'T WORK IF THERE ARE A LOT OF DUPLICATES
 
-    //int[] ary = { 2, 10, 15, 23, 0,  5, 6 };//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
+    //int[] ary = { 2, 10, 15, 23, 0,  5, 6 , 1};//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
 
     //int[] ary = {0,1, 2, 40, 5, 10 , 20, 9};
 
@@ -136,7 +151,8 @@ public class Quick{
     System.out.println();
     */
 
-    int[] ary = {0,1, 2};//, 40, 5, 10 , 20, 9};
+    
+    int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
 
 
 
@@ -152,7 +168,7 @@ public class Quick{
     System.out.println(quickselect( ary , 3 ));  //would return
     System.out.println(quickselect( ary , 4 ));  //would return
     System.out.println(quickselect( ary , 5 ));  //would return
-    System.out.println(quickselect( ary , 6 ));  //would return
-    System.out.println(quickselect( ary , 7 ));  //would return*/
+    //System.out.println(quickselect( ary , 6 ));  //would return
+  */  //System.out.println(quickselect( ary , 7 ));  //would return
   }
 }
