@@ -17,7 +17,7 @@ public class Quick{
   }
 
   public static int partition(int[] data, int start, int end){
-    
+
     if (start == end){
       return start;
     }
@@ -89,9 +89,9 @@ public class Quick{
 
   public static int quickselect(int[] data, int k){
     //int finalpivot = partition(data, 0, data.length - 1);
-    
+
     /*
-    
+
     if (partition(data, 0, data.length - 1) == k){
       return data[k];
     }
@@ -129,7 +129,13 @@ public class Quick{
   }
 
   public static void quicksort(int[] data){
-    quicksortH(data, 0, data.length - 1, 0, data.length - 1);
+    //fake quicksort below
+    int[] newary = new int[data.length];
+    for (int i = 0; i < data.length; i++){
+      newary[i] = quickselect( data , i );
+    }
+    data = newary;
+    //quicksortH(data, 0, data.length - 1, 0, data.length - 1);
   }
 
   private static void quicksortH(int[] data, int start, int end, int oldstart, int oldend){
@@ -148,7 +154,7 @@ public class Quick{
 
 
     //partition testing is below
-    
+
 /*
     int[] test = {17, 61, 67, 47, 93, 12, 20, 4, 44, 68};
     for (int i : test){
@@ -178,15 +184,15 @@ public class Quick{
 
     //System.out.println("" + median(ary,0,((ary.length - 1) / 2),ary.length - 1));
 
-    
+
     quicksort(ary);
     for (int i : ary){
       System.out.print ("" + i + " ");
     }
     System.out.println();
-    
 
-    
+
+
     //int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
 
 
