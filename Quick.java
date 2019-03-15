@@ -249,4 +249,22 @@ public class Quick{
       System.out.println();
     }
   }
+
+  public static void insertionSort(int[] ary){
+    int temp;
+    for (int i = 1; i < ary.length; i++){
+        temp = ary[i];
+        for (int j = i - 1; j >= 0; j--){
+            if (temp < ary[j]){
+                ary[j + 1] = ary[j];
+            }else{
+                ary[j + 1] = temp;
+                j = -1;
+            }
+            if (j == 0){
+                ary[0] = temp;
+            }
+        }
+    }
+  }
 }
