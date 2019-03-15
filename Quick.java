@@ -155,13 +155,13 @@ public class Quick{
   }
 
   
-  public static void main(String[] args){
+//  public static void main(String[] args){
     //int[] test =  {0, 1, 2, 3, 4, 5, 6, 7, 8,9};
 
 
     //partition testing is below
 
-/*
+  /*
     int[] test = {17, 61, 67, 47, 93, 12, 20, 4, 44, 68};
     for (int i : test){
       System.out.print ("" + i + " ");
@@ -184,7 +184,7 @@ public class Quick{
 
     //@TODO: QUICKSELECT STILL DOESN'T WORK IF THERE ARE A LOT OF DUPLICATES
 
-    int[] ary = { 2, 10, 15, 23, 0,  5, 6 , 1};//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
+//    int[] ary = { 2, 10, 15, 23, 0,  5, 6 , 1};//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
 
     //int[] ary = {0,1, 2, 40, 5, 10 , 20, 9, 1, 1, 1, 1};
 
@@ -192,11 +192,11 @@ public class Quick{
 
     //quicksort testing is below
     
-    quicksort(ary);
-    for (int i : ary){
-      System.out.print ("" + i + " ");
-    }
-    System.out.println();
+//    quicksort(ary);
+//    for (int i : ary){
+//      System.out.print ("" + i + " ");
+//    }
+//    System.out.println();
   
 
     //int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
@@ -219,7 +219,7 @@ public class Quick{
     //System.out.println(quickselect( ary , 6 ));  //would return
   */  //System.out.println(quickselect( ary , 7 ));  //would return
   
-  }/*
+//  }/*
   public static void main(String[]args){
     System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
     int[]MAX_LIST = {1000000000,500,10};
@@ -253,5 +253,5 @@ public class Quick{
       }
       System.out.println();
     }
-  }*/
+  }
 }
