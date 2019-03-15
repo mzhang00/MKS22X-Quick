@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Quick{
 
   private static int median(int[] ary, int a, int b, int c){
@@ -130,26 +132,29 @@ public class Quick{
 
   public static void quicksort(int[] data){
     //fake quicksort below
+    /*
     int[] newary = new int[data.length];
     for (int i = 0; i < data.length; i++){
       newary[i] = quickselect( data , i );
     }
     data = newary;
-    //quicksortH(data, 0, data.length - 1, 0, data.length - 1);
+    */
+
+    quicksortH(data, 0, data.length - 1, 0, data.length - 1);
   }
 
-  private static void quicksortH(int[] data, int start, int end, int oldstart, int oldend){
-    if (start == end){
+  private static void quicksortH(int[] data, int start, int end, int newstart, int newend){
+    if (start >= end){
       return;
     }
     if (start >= 0 && end <= data.length - 1){
       int pivot = partition(data, start, end);
-      quicksortH(data, oldstart, pivot - 1, start, end);
-      quicksortH(data, pivot + 1, oldend, start, end);
+      quicksortH(data, newstart, pivot - 1, start, pivot - 1);
+      quicksortH(data, pivot + 1, newend, pivot + 1, end);
     }
   }
 
-  /*
+  
   public static void main(String[] args){
     //int[] test =  {0, 1, 2, 3, 4, 5, 6, 7, 8,9};
 
@@ -179,20 +184,20 @@ public class Quick{
 
     //@TODO: QUICKSELECT STILL DOESN'T WORK IF THERE ARE A LOT OF DUPLICATES
 
-    //int[] ary = { 2, 10, 15, 23, 0,  5, 6 , 1};//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
+    int[] ary = { 2, 10, 15, 23, 0,  5, 6 , 1};//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
 
     //int[] ary = {0,1, 2, 40, 5, 10 , 20, 9, 1, 1, 1, 1};
 
     //System.out.println("" + median(ary,0,((ary.length - 1) / 2),ary.length - 1));
 
     //quicksort testing is below
-    /*
+    
     quicksort(ary);
     for (int i : ary){
       System.out.print ("" + i + " ");
     }
     System.out.println();
-  */
+  
 
     //int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
 
@@ -214,7 +219,7 @@ public class Quick{
     //System.out.println(quickselect( ary , 6 ));  //would return
   */  //System.out.println(quickselect( ary , 7 ));  //would return
   
-  //}
+  }/*
   public static void main(String[]args){
     System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
     int[]MAX_LIST = {1000000000,500,10};
@@ -248,23 +253,5 @@ public class Quick{
       }
       System.out.println();
     }
-  }
-
-  public static void insertionSort(int[] ary){
-    int temp;
-    for (int i = 1; i < ary.length; i++){
-        temp = ary[i];
-        for (int j = i - 1; j >= 0; j--){
-            if (temp < ary[j]){
-                ary[j + 1] = ary[j];
-            }else{
-                ary[j + 1] = temp;
-                j = -1;
-            }
-            if (j == 0){
-                ary[0] = temp;
-            }
-        }
-    }
-  }
+  }*/
 }
