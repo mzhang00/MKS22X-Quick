@@ -18,6 +18,10 @@ public class Quick{
     return c;
   }
 
+  private static int partitionDutch(int[] data, int lo, int hi){
+    return 0;
+  }
+  
   public static int partition(int[] data, int start, int end){
     if (start == end){
       return start;
