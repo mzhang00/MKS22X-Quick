@@ -21,8 +21,7 @@ public class Quick{
   private static int[] partitionDutch(int[] data, int start, int end){
     int[] returnary = new int[2];
     int lt = 0;
-    int gt = 0;
-    boolean firsttime = true;
+    int gt = end;
 
     if (start == end){
       returnary[0] = start;
@@ -30,12 +29,12 @@ public class Quick{
       return returnary;
     }
 
-    int pivot = median(data, start, end, ((end - start) / 2) + start);    
+    int pivot = median(data, start, end, ((end - start) / 2) + start);
     int oldpivot = start;
     lt = oldpivot + 1;
 
     //System.out.println("" + pivot + " ");
-    
+
     int temp = data[start];
     data[start] = data[pivot];
     data[pivot] = temp;
@@ -43,20 +42,16 @@ public class Quick{
 
     while (start < end){
       if (data[start] == data[oldpivot]){
-        
-        if (firsttime){
-          lt = start;
-          firsttime = false;
-        }
-
-        gt = start;
+        temp = data[start];
+        data[start] = data[lt];
+        data[lt] = temp;
         start++;
       }
       if (data[start] > data[oldpivot]){
         temp = data[start];
-        data[start] = data[end];
-        data[end] = temp;
-        end--;
+        data[start] = data[gt];
+        data[gt] = temp;
+        gt--;
       }
       if (data[start] < data[oldpivot]){
 
@@ -65,7 +60,7 @@ public class Quick{
           temp = data[start];
           data[start] = data[lt];
           data[lt] = temp;
-        
+
           lt++;
           gt = start;
         }
@@ -74,17 +69,18 @@ public class Quick{
       }
     }
 
-    if (data[oldpivot] < data[start]){
+    if (data[oldpivot] <= data[start]){
       temp = data[lt - 1];
       data[lt - 1] = data[oldpivot];
       data[oldpivot] = temp;
-    }else{  
+      //gt = start;
+    }else{
       temp = data[start];
       data[start] = data[oldpivot];
       data[oldpivot] = temp;
     }
 
-    if (gt == 0){        
+    if (gt == 0){
       lt = start;
       gt = start;
     }
@@ -94,13 +90,13 @@ public class Quick{
     //System.out.println("" + start + " ");
     return returnary;
   }
-  
+
   private static int partition(int[] data, int start, int end){
     if (start == end){
       return start;
     }
 
-    int pivot = median(data, start, end, ((end - start) / 2) + start);    
+    int pivot = median(data, start, end, ((end - start) / 2) + start);
     int oldpivot = start;
     int temp = data[start];
 
@@ -216,7 +212,7 @@ public class Quick{
 
     //partition testing is below
 
-  
+
     //int[] test = {17, 61, 67, 47, 93, 12, 20, 4, 44, 68};
  /*   int[] test = {17, 17, 17, 47, 93, 12, 20, 4, 44, 17};
     for (int i : test){
@@ -232,13 +228,14 @@ public class Quick{
     System.out.println();
   */
 
-    int[] test = {17, 17, 17, 47, 93, 12, 20, 4, 44, 17};
+    //int[] test = {17, 17, 17, 47, 93, 12, 20, 4, 44, 17};
+    int[] test = {5,5,5,1,4,3,5,5,2,5};
     for (int i : test){
       System.out.print ("" + i + " ");
     }
     System.out.println();
     System.out.println("------------------------------");
-    int[] newary = partitionDutch(test, 2, 7);
+    int[] newary = partitionDutch(test, 0, 9);
     System.out.println("------------------------------");
     for (int i : test){
       System.out.print ("" + i + " ");
@@ -251,8 +248,8 @@ public class Quick{
     System.out.println();
 
     //quicksort testing is below
-   
-  /*  
+
+  /*
     quicksort(ary);
     for (int i : ary){
       System.out.print ("" + i + " ");
@@ -262,7 +259,7 @@ public class Quick{
 
     //quickselect testing is below
 
-  
+
  /*   for (int i = 0; i < ary.length; i++){
       System.out.println(quickselect( ary , i ));
     }
