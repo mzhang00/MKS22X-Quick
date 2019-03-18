@@ -34,7 +34,7 @@ public class Quick{
     int oldpivot = start;
     lt = oldpivot + 1;
 
-    System.out.println("" + pivot + " ");
+    //System.out.println("" + pivot + " ");
     
     int temp = data[start];
     data[start] = data[pivot];
@@ -48,12 +48,7 @@ public class Quick{
           lt = start;
           firsttime = false;
         }
-/*
-        temp = data[pivot - 1];
-        data[start] = data[end];
-        data[end] = temp;
-        end--;
-*/
+
         gt = start;
         start++;
       }
@@ -96,7 +91,7 @@ public class Quick{
 
     returnary[0] = lt - 1;
     returnary[1] = gt;
-    System.out.println("" + start + " ");
+    //System.out.println("" + start + " ");
     return returnary;
   }
   
@@ -145,6 +140,7 @@ public class Quick{
 
   public static int quickselect(int[] data, int k){
     return quickselectH(data, k, 0, data.length - 1);
+    //return quickselectD(data, k, 0, data.length - 1);
   }
 
   private static int quickselectH(int[] data, int k, int start, int end){
@@ -163,8 +159,26 @@ public class Quick{
     return quickselectH(data, k, start, end);
   }
 
+  private static int quickselectD(int[] data, int k, int start, int end){
+    int finalpivotary[] = partitionDutch(data, start, end);
+    int finalpivot = finalpivotary[1];
+    if (finalpivot == k){
+      return data[k];
+    }
+    if (finalpivot != k){
+      if (finalpivot > k){
+        end = finalpivot - 1;
+      }
+      if (finalpivot < k){
+        start = finalpivot + 1;
+      }
+    }
+    return quickselectH(data, k, start, end);
+  }
+
   public static void quicksort(int[] data){
-    quicksortH(data, 0, data.length - 1, 0, data.length - 1);
+    //quicksortH(data, 0, data.length - 1, 0, data.length - 1);
+    quicksortD(data, 0, data.length - 1, 0, data.length - 1);
   }
 
   private static void quicksortH(int[] data, int start, int end, int newstart, int newend){
@@ -178,8 +192,18 @@ public class Quick{
     }
   }
 
+  private static void quicksortD(int[] data, int start, int end, int newstart, int newend){
+    if (start >= end){
+      return;
+    }
+    if (start >= 0 && end <= data.length - 1){
+      int pivot[] = partitionDutch(data, start, end);
+      quicksortH(data, newstart, pivot[0] - 1, start, pivot[0] - 1);
+      quicksortH(data, pivot[1] + 1, newend, pivot[1] + 1, end);
+    }
+  }
 
-  public static void main(String[] args){
+ /* public static void main(String[] args){
 
 
     //test arrays below
@@ -187,7 +211,7 @@ public class Quick{
     //int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};
     //int[] ary = { 2, 10, 15, 23, 0,  5, 6 , 1};//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
     //int[] ary = {0,1, 2, 40, 5, 10 , 20, 9, 1, 1, 1, 1};
-    //int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
+  /*  int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
 
 
     //partition testing is below
@@ -207,14 +231,14 @@ public class Quick{
     }
     System.out.println();
   //*/
-
-    int[] test = {17, 17, 17, 17, 93, 12, 20, 4, 17, 17};
+/*
+    int[] test = {17, 1, 2, 3, 93, 12, 20, 4, 19, 47};
     for (int i : test){
       System.out.print ("" + i + " ");
     }
     System.out.println();
     System.out.println("------------------------------");
-    int[] newary = partitionDutch(test, 1, 9);
+    int[] newary = partitionDutch(test, 0, 9);
     System.out.println("------------------------------");
     for (int i : test){
       System.out.print ("" + i + " ");
@@ -238,13 +262,13 @@ public class Quick{
 
     //quickselect testing is below
 
-  /*
-    for (int i = 0; i < ary.length; i++){
+  
+ /*   for (int i = 0; i < ary.length; i++){
       System.out.println(quickselect( ary , i ));
     }
   */
 
-  }
+  //}
 /*
   public static void main(String[]args){
     System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
