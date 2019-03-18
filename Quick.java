@@ -18,11 +18,89 @@ public class Quick{
     return c;
   }
 
-  private static int partitionDutch(int[] data, int lo, int hi){
-    return 0;
+  private static int[] partitionDutch(int[] data, int start, int end){
+    int[] returnary = new int[2];
+    int lt = 0;
+    int gt = 0;
+    boolean firsttime = true;
+
+    if (start == end){
+      returnary[0] = start;
+      returnary[1] = start;
+      return returnary;
+    }
+
+    int pivot = median(data, start, end, ((end - start) / 2) + start);    
+    int oldpivot = start;
+    lt = oldpivot + 1;
+
+    System.out.println("" + pivot + " ");
+    
+    int temp = data[start];
+    data[start] = data[pivot];
+    data[pivot] = temp;
+    start++;
+
+    while (start < end){
+      if (data[start] == data[oldpivot]){
+        
+        if (firsttime){
+          lt = start;
+          firsttime = false;
+        }
+/*
+        temp = data[pivot - 1];
+        data[start] = data[end];
+        data[end] = temp;
+        end--;
+*/
+        gt = start;
+        start++;
+      }
+      if (data[start] > data[oldpivot]){
+        temp = data[start];
+        data[start] = data[end];
+        data[end] = temp;
+        end--;
+      }
+      if (data[start] < data[oldpivot]){
+
+        if (!firsttime){
+
+          temp = data[start];
+          data[start] = data[lt];
+          data[lt] = temp;
+        
+          lt++;
+          gt = start;
+        }
+
+        start++;
+      }
+    }
+
+    if (data[oldpivot] < data[start]){
+      temp = data[lt - 1];
+      data[lt - 1] = data[oldpivot];
+      data[oldpivot] = temp;
+    }else{  
+      temp = data[start];
+      data[start] = data[oldpivot];
+      data[oldpivot] = temp;
+    }
+
+    if (gt == 0){        
+      lt = start;
+      gt = start;
+    }
+
+    returnary[0] = lt - 1;
+    returnary[1] = gt;
+    System.out.println("" + start + " ");
+    return returnary;
   }
   
-  public static int partition(int[] data, int start, int end){
+  private static int partition(int[] data, int start, int end){
     if (start == end){
       return start;
     }
@@ -100,13 +178,23 @@ public class Quick{
     }
   }
 
-  
-//  public static void main(String[] args){
+
+  public static void main(String[] args){
+
+
+    //test arrays below
+
+    //int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};
+    //int[] ary = { 2, 10, 15, 23, 0,  5, 6 , 1};//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
+    //int[] ary = {0,1, 2, 40, 5, 10 , 20, 9, 1, 1, 1, 1};
+    //int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
+
 
     //partition testing is below
 
   /*
-    int[] test = {17, 61, 67, 47, 93, 12, 20, 4, 44, 68};
+    //int[] test = {17, 61, 67, 47, 93, 12, 20, 4, 44, 68};
+    int[] test = {17, 17, 17, 47, 93, 12, 20, 4, 44, 17};
     for (int i : test){
       System.out.print ("" + i + " ");
     }
@@ -118,16 +206,26 @@ public class Quick{
       System.out.print ("" + i + " ");
     }
     System.out.println();
+  //*/
 
-  */
-
-    //test arrays below
-
-    //int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};
-    //int[] ary = { 2, 10, 15, 23, 0,  5, 6 , 1};//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
-    //int[] ary = {0,1, 2, 40, 5, 10 , 20, 9, 1, 1, 1, 1};
-    //int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
-
+    int[] test = {17, 17, 17, 17, 93, 12, 20, 4, 17, 17};
+    for (int i : test){
+      System.out.print ("" + i + " ");
+    }
+    System.out.println();
+    System.out.println("------------------------------");
+    int[] newary = partitionDutch(test, 1, 9);
+    System.out.println("------------------------------");
+    for (int i : test){
+      System.out.print ("" + i + " ");
+    }
+    System.out.println();
+    System.out.println("------------------------------");
+    for (int i : newary){
+      System.out.print ("" + i + " ");
+    }
+    System.out.println();
+//*/
     //quicksort testing is below
    
   /*  
@@ -146,8 +244,8 @@ public class Quick{
     }
   */
 
-//  }
-
+  }
+/*
   public static void main(String[]args){
     System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
     int[]MAX_LIST = {1000000000,500,10};
@@ -181,5 +279,5 @@ public class Quick{
       }
       System.out.println();
     }
-  }
+  }*/
 }
