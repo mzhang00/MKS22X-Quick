@@ -177,8 +177,8 @@ public class Quick{
   }
 
   public static void quicksort(int[] data){
-    //quicksortH(data, 0, data.length - 1, 0, data.length - 1);
-    quicksortD(data, 0, data.length - 1, 0, data.length - 1);
+    quicksortH(data, 0, data.length - 1, 0, data.length - 1);
+    //quicksortD(data, 0, data.length - 1, 0, data.length - 1);
   }
 
   private static void quicksortH(int[] data, int start, int end, int newstart, int newend){
@@ -203,7 +203,7 @@ public class Quick{
     }
   }
 
- /* public static void main(String[] args){
+ public static void main(String[] args){
 
 
     //test arrays below
@@ -211,14 +211,14 @@ public class Quick{
     //int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};
     //int[] ary = { 2, 10, 15, 23, 0,  5, 6 , 1};//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
     //int[] ary = {0,1, 2, 40, 5, 10 , 20, 9, 1, 1, 1, 1};
-  /*  int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
+    int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
 
 
     //partition testing is below
 
-  /*
+  
     //int[] test = {17, 61, 67, 47, 93, 12, 20, 4, 44, 68};
-    int[] test = {17, 17, 17, 47, 93, 12, 20, 4, 44, 17};
+ /*   int[] test = {17, 17, 17, 47, 93, 12, 20, 4, 44, 17};
     for (int i : test){
       System.out.print ("" + i + " ");
     }
@@ -230,15 +230,15 @@ public class Quick{
       System.out.print ("" + i + " ");
     }
     System.out.println();
-  //*/
-/*
-    int[] test = {17, 1, 2, 3, 93, 12, 20, 4, 19, 47};
+  */
+
+    int[] test = {17, 17, 17, 47, 93, 12, 20, 4, 44, 17};
     for (int i : test){
       System.out.print ("" + i + " ");
     }
     System.out.println();
     System.out.println("------------------------------");
-    int[] newary = partitionDutch(test, 0, 9);
+    int[] newary = partitionDutch(test, 2, 7);
     System.out.println("------------------------------");
     for (int i : test){
       System.out.print ("" + i + " ");
@@ -249,7 +249,7 @@ public class Quick{
       System.out.print ("" + i + " ");
     }
     System.out.println();
-//*/
+
     //quicksort testing is below
    
   /*  
@@ -268,9 +268,9 @@ public class Quick{
     }
   */
 
-  //}
-/*
-  public static void main(String[]args){
+  }
+
+/*  public static void main(String[]args){
     System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
     int[]MAX_LIST = {1000000000,500,10};
     for(int MAX : MAX_LIST){
