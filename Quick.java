@@ -76,7 +76,7 @@ public class Quick{
 
     returnary[0] = lt;
     returnary[1] = gt;
-    
+
     return returnary;
   }
 
@@ -201,7 +201,7 @@ public class Quick{
 
     //int[] test = {17, 61, 67, 47, 93, 12, 20, 4, 44, 68};
     //int[] test = {17, 17, 17, 47, 93, 12, 20, 4, 44, 17};
-  /*  
+  /*
     for (int i : test){
       System.out.print ("" + i + " ");
     }
@@ -218,7 +218,7 @@ public class Quick{
     //dutch partition testing is below
 
     //int[] test = {17, 17, 17, 47, 93, 12, 20, 4, 44, 17};
-  /*    
+  /*
     int[] test = {5,9,5,1,4,3,5,7,2,5};
     for (int i : test){
       System.out.print ("" + i + " ");
@@ -302,6 +302,32 @@ public class Quick{
         System.out.println(size +"\t\t"+MAX+"\t"+1.0*qtime/btime);
       }
       System.out.println();
+    }
+  }
+
+  public static void insertionSort(int[] ary, int lo, int hi){
+    int temp;
+    int counter;
+    for (int i = lo + 1; i < hi + 1; i++){
+      temp = ary[i];
+      counter = temp;
+      //while loop is basically if statement
+      while (ary[counter] < temp){
+        //swap
+        //shift
+        //https://commons.wikimedia.org/wiki/File:Insertion-sort-example.gif
+      }/*
+      for (int j = i - 1; j >= 0; j--){
+        if (temp < ary[j]){
+          ary[j + 1] = ary[j];
+        }else{
+          ary[j + 1] = temp;
+          j = -1;
+        }
+        if (j == 0){
+          ary[0] = temp;
+        }
+      }*/
     }
   }
 }
