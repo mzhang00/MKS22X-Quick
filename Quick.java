@@ -164,8 +164,8 @@ public class Quick{
   }
 
   public static void quicksort(int[] data){
-    quicksortH(data, 0, data.length - 1, 0, data.length - 1);
-    //quicksortD(data, 0, data.length - 1, 0, data.length - 1);
+    //quicksortH(data, 0, data.length - 1, 0, data.length - 1);
+    quicksortD(data, 0, data.length - 1, 0, data.length - 1);
   }
 
   private static void quicksortH(int[] data, int start, int end, int newstart, int newend){
@@ -185,13 +185,12 @@ public class Quick{
     }
     if (start >= 0 && end <= data.length - 1){
       int pivot[] = partitionDutch(data, start, end);
-      quicksortH(data, newstart, pivot[0] - 1, start, pivot[0] - 1);
-      quicksortH(data, pivot[1] + 1, newend, pivot[1] + 1, end);
+      quicksortH(data, newstart, pivot[0], start, pivot[0]);
+      quicksortH(data, pivot[1], newend, pivot[1], end);
     }
   }
 
  public static void main(String[] args){
-
 
     //test arrays below
 
@@ -243,16 +242,17 @@ public class Quick{
 
     //quicksort testing is below
 
-  /*
+  
     quicksort(ary);
     for (int i : ary){
       System.out.print ("" + i + " ");
     }
     System.out.println();
-  */
+  
 
     //quickselect testing is below
 
+  /*
     int[] newary = partitionDutch(ary, 0, ary.length - 1);
     System.out.println("------------------------------");
     for (int i : ary){
@@ -268,7 +268,7 @@ public class Quick{
     for (int i = 0; i < ary.length; i++){
       System.out.println(quickselect( ary , i ));
     }
-  
+  */
 
   }
 
