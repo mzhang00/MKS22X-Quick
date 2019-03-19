@@ -126,8 +126,8 @@ public class Quick{
   }
 
   public static int quickselect(int[] data, int k){
-    return quickselectH(data, k, 0, data.length - 1);
-    //return quickselectD(data, k, 0, data.length - 1);
+    //return quickselectH(data, k, 0, data.length - 1);
+    return quickselectD(data, k, 0, data.length - 1);
   }
 
   private static int quickselectH(int[] data, int k, int start, int end){
@@ -148,16 +148,16 @@ public class Quick{
 
   private static int quickselectD(int[] data, int k, int start, int end){
     int finalpivotary[] = partitionDutch(data, start, end);
-    int finalpivot = finalpivotary[1];
-    if (finalpivot == k){
+    boolean kinrange = finalpivotary[0] < k && k < finalpivotary[1];
+    if (kinrange){
       return data[k];
     }
-    if (finalpivot != k){
-      if (finalpivot > k){
-        end = finalpivot - 1;
+    if (!kinrange){
+      if (finalpivotary[0] > k){
+        end = finalpivotary[0];
       }
-      if (finalpivot < k){
-        start = finalpivot + 1;
+      if (finalpivotary[1] < k){
+        start = finalpivotary[1];
       }
     }
     return quickselectH(data, k, start, end);
@@ -196,16 +196,15 @@ public class Quick{
     //test arrays below
 
     //int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};
-    //int[] ary = { 2, 10, 15, 23, 0,  5, 6 , 1};//, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
+    int[] ary = { 2, 10, 15, 23, 0,  5, 6 , 1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
     //int[] ary = {0,1, 2, 40, 5, 10 , 20, 9, 1, 1, 1, 1};
-    int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
-
+    //int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
 
     //partition testing is below
 
-
     //int[] test = {17, 61, 67, 47, 93, 12, 20, 4, 44, 68};
- /*   int[] test = {17, 17, 17, 47, 93, 12, 20, 4, 44, 17};
+    //int[] test = {17, 17, 17, 47, 93, 12, 20, 4, 44, 17};
+  /*  
     for (int i : test){
       System.out.print ("" + i + " ");
     }
@@ -219,7 +218,10 @@ public class Quick{
     System.out.println();
   */
 
+    //dutch partition testing is below
+
     //int[] test = {17, 17, 17, 47, 93, 12, 20, 4, 44, 17};
+  /*    
     int[] test = {5,9,5,1,4,3,5,7,2,5};
     for (int i : test){
       System.out.print ("" + i + " ");
@@ -237,6 +239,7 @@ public class Quick{
       System.out.print ("" + i + " ");
     }
     System.out.println();
+  */
 
     //quicksort testing is below
 
@@ -250,11 +253,22 @@ public class Quick{
 
     //quickselect testing is below
 
-
- /*   for (int i = 0; i < ary.length; i++){
+    int[] newary = partitionDutch(ary, 0, ary.length - 1);
+    System.out.println("------------------------------");
+    for (int i : ary){
+      System.out.print ("" + i + " ");
+    }
+    System.out.println();
+    System.out.println("------------------------------");
+    for (int i : newary){
+      System.out.print ("" + i + " ");
+    }
+    System.out.println();
+    System.out.println("------------------------------");
+    for (int i = 0; i < ary.length; i++){
       System.out.println(quickselect( ary , i ));
     }
-  */
+  
 
   }
 
