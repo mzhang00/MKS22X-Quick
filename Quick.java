@@ -31,7 +31,6 @@ public class Quick{
 
     int pivot = median(data, start, end, ((end - start) / 2) + start);
     int oldpivot = start;
-    lt = oldpivot + 1;
 
     //System.out.println("" + pivot + " ");
 
@@ -39,33 +38,29 @@ public class Quick{
     data[start] = data[pivot];
     data[pivot] = temp;
     start++;
+    lt = start;
 
-    while (start < end){
+    while (start < gt){
       if (data[start] == data[oldpivot]){
         temp = data[start];
         data[start] = data[lt];
         data[lt] = temp;
         start++;
-      }
-      if (data[start] > data[oldpivot]){
-        temp = data[start];
-        data[start] = data[gt];
-        data[gt] = temp;
-        gt--;
-      }
-      if (data[start] < data[oldpivot]){
-
-        if (!firsttime){
-
+      }else{
+        if (data[start] > data[oldpivot]){
           temp = data[start];
-          data[start] = data[lt];
-          data[lt] = temp;
-
-          lt++;
-          gt = start;
+          data[start] = data[gt];
+          data[gt] = temp;
+          gt--;
+        }else{
+          if (data[start] < data[oldpivot]){
+            temp = data[start];
+            data[start] = data[lt];
+            data[lt] = temp;
+            lt++;
+            start++;
+          }
         }
-
-        start++;
       }
     }
 
@@ -73,6 +68,7 @@ public class Quick{
       temp = data[lt - 1];
       data[lt - 1] = data[oldpivot];
       data[oldpivot] = temp;
+      lt--;
       //gt = start;
     }else{
       temp = data[start];
@@ -80,12 +76,7 @@ public class Quick{
       data[oldpivot] = temp;
     }
 
-    if (gt == 0){
-      lt = start;
-      gt = start;
-    }
-
-    returnary[0] = lt - 1;
+    returnary[0] = lt;
     returnary[1] = gt;
     //System.out.println("" + start + " ");
     return returnary;
@@ -229,13 +220,13 @@ public class Quick{
   */
 
     //int[] test = {17, 17, 17, 47, 93, 12, 20, 4, 44, 17};
-    int[] test = {5,5,5,1,4,3,5,5,2,5};
+    int[] test = {5,9,5,1,4,3,5,7,2,5};
     for (int i : test){
       System.out.print ("" + i + " ");
     }
     System.out.println();
     System.out.println("------------------------------");
-    int[] newary = partitionDutch(test, 0, 9);
+    int[] newary = partitionDutch(test, 2, 9);
     System.out.println("------------------------------");
     for (int i : test){
       System.out.print ("" + i + " ");
