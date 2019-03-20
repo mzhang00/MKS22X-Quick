@@ -270,7 +270,7 @@ public class Quick{
 
 //  }
 
-  public static void main(String[]args){
+/*  public static void main(String[]args){
     System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
     int[]MAX_LIST = {1000000000,500,10};
     for(int MAX : MAX_LIST){
@@ -288,6 +288,7 @@ public class Quick{
           long t1,t2;
           t1 = System.currentTimeMillis();
           Quick.quicksort(data2);
+          //Quick.insertionSort(data2, 0, data2.length - 1);
           t2 = System.currentTimeMillis();
           qtime += t2 - t1;
           t1 = System.currentTimeMillis();
@@ -304,35 +305,28 @@ public class Quick{
       System.out.println();
     }
   }
+*/
 
-  public static void insertionSort(int[] ary, int lo, int hi){
+  public static void main(String[] args){
+    int[] ary = {10,1, 2, 40, 5, 10 , 20, 9, 1, 1, 1, 1};
+    insertionSort(ary, 0, ary.length);
+    for (int i : ary){
+      System.out.print("" + i + " ");
+    }
+    System.out.println();
+  }
+
+  private static void insertionSort(int[] ary, int lo, int hi){
     int temp;
     int counter;
-    for (int i = lo + 1; i < hi + 1; i++){
+    for (int i = lo + 1; i < hi; i++){
       temp = ary[i];
       counter = i - 1;
-      //while loop is basically if statement
       while (counter >= lo && ary[counter] > temp){
         ary[counter + 1] = ary[counter];
         counter--;
       }
       ary[counter + 1] = temp;
-
-        //swap
-        //shift
-        //https://commons.wikimedia.org/wiki/File:Insertion-sort-example.gif
-      }/*
-      for (int j = i - 1; j >= 0; j--){
-        if (temp < ary[j]){
-          ary[j + 1] = ary[j];
-        }else{
-          ary[j + 1] = temp;
-          j = -1;
-        }
-        if (j == 0){
-          ary[0] = temp;
-        }
-      }*/
     }
   }
 }
