@@ -310,9 +310,14 @@ public class Quick{
     int counter;
     for (int i = lo + 1; i < hi + 1; i++){
       temp = ary[i];
-      counter = temp;
+      counter = i - 1;
       //while loop is basically if statement
-      while (ary[counter] < temp){
+      while (counter >= lo && ary[counter] > temp){
+        ary[counter + 1] = ary[counter];
+        counter--;
+      }
+      ary[counter + 1] = temp;
+
         //swap
         //shift
         //https://commons.wikimedia.org/wiki/File:Insertion-sort-example.gif
