@@ -163,7 +163,7 @@ public class Quick{
 
   public static void quicksort(int[] data){
     //quicksortH(data, 0, data.length - 1, 0, data.length - 1);
-    if (data.length < 27){
+    if (data.length <= 43){
       insertionSort(data, 0, data.length);
     }else{
       quicksortD(data, 0, data.length - 1, 0, data.length - 1);
