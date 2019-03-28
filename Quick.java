@@ -124,8 +124,8 @@ public class Quick{
   }
 
   public static int quickselect(int[] data, int k){
-    //return quickselectH(data, k, 0, data.length - 1);
-    return quickselectD(data, k, 0, data.length - 1);
+    return quickselectH(data, k, 0, data.length - 1);
+    //return quickselectD(data, k, 0, data.length - 1);
   }
 
   private static int quickselectH(int[] data, int k, int start, int end){
@@ -143,22 +143,20 @@ public class Quick{
     }
     return quickselectH(data, k, start, end);
   }
-
+  
   private static int quickselectD(int[] data, int k, int start, int end){
-    int finalpivotary[] = partitionDutch(data, start, end);
-    boolean kinrange = finalpivotary[0] < k && k < finalpivotary[1];
-    if (kinrange){
-      return data[k];
-    }
-    if (!kinrange){
-      if (finalpivotary[0] > k){
-        end = finalpivotary[0];
+    while (true){
+      int[] finalpivotary = partitionDutch(data, start, end);
+      if (finalpivotary[0] < k && k < finalpivotary[1]){
+        return data[k];
+      }else{
+        if (finalpivotary[0] >= k){
+          end = finalpivotary[0];
+        }else{
+          start = finalpivotary[1];
+        }
       }
-      if (finalpivotary[1] < k){
-        start = finalpivotary[1];
-      }
     }
-    return quickselectD(data, k, start, end);
   }
 
   public static void quicksort(int[] data){
@@ -192,11 +190,11 @@ public class Quick{
     }
   }
 
-// public static void main(String[] args){
+ public static void main(String[] args){
 
     //test arrays below
 
-    //int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};
+    int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};
     //int[] ary = { 2, 10, 15, 23, 0,  5, 6 , 1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
     //int[] ary = {0,1, 2, 40, 5, 10 , 20, 9, 1, 1, 1, 1};
     //int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
@@ -254,27 +252,14 @@ public class Quick{
 
     //quickselect testing is below
 
-  /*
-    int[] newary = partitionDutch(ary, 0, ary.length - 1);
-    System.out.println("------------------------------");
-    for (int i : ary){
-      System.out.print ("" + i + " ");
-    }
-    System.out.println();
-    System.out.println("------------------------------");
-    for (int i : newary){
-      System.out.print ("" + i + " ");
-    }
-    System.out.println();
-    System.out.println("------------------------------");
     for (int i = 0; i < ary.length; i++){
       System.out.println(quickselect( ary , i ));
     }
-  */
+  
 
-//  }
+  }
 
-  public static void main(String[]args){
+/*  public static void main(String[]args){
     System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
     int[]MAX_LIST = {1000000000,500,10};
     for(int MAX : MAX_LIST){
@@ -309,7 +294,7 @@ public class Quick{
       System.out.println();
     }
   }
-
+*/
 /*  public static void main(String[] args){
     int[] ary = {10,1, 2, 40, 5, 10 , 20, 9, 1, 1, 1, 1};
     insertionSort(ary, 0, ary.length);
