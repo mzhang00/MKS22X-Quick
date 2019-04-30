@@ -143,7 +143,7 @@ public class Quick{
     }
     return quickselectH(data, k, start, end);
   }
-  
+
   private static int quickselectD(int[] data, int k, int start, int end){
     while (true){
       int[] finalpivotary = partitionDutch(data, start, end);
@@ -194,7 +194,7 @@ public class Quick{
 
     //test arrays below
 
-    int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};
+    //int[]ary = { 2, 10, 15, 23, 0,  5,1,3,4,6,7,8,11,12,19,44,56,99,98,987,912,100,77,76,65,69,654,68,765,123,125,236,999,998,997,991,1111,11112,111122,1112,1113,1111111,1231231,145672,908,7857,7800};
     //int[] ary = { 2, 10, 15, 23, 0,  5, 6 , 1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0};
     //int[] ary = {0,1, 2, 40, 5, 10 , 20, 9, 1, 1, 1, 1};
     //int[] ary = {0,1, 2, 50, 5, 10 , 20, 9};
@@ -252,14 +252,18 @@ public class Quick{
 
     //quickselect testing is below
 
-    for (int i = 0; i < ary.length; i++){
-      System.out.println(quickselect( ary , i ));
+    int[] ary = new int[1000000];
+    for (int i = 0 ; i < ary.length; i++){
+      ary[i] = i;
     }
-  
+    //for (int i = 0; i < ary.length; i++){
+      System.out.println(quickselect( ary , 99999 ));
+    //}
+
 
   }
-
-/*  public static void main(String[]args){
+/*
+  public static void main(String[]args){
     System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
     int[]MAX_LIST = {1000000000,500,10};
     for(int MAX : MAX_LIST){
@@ -293,8 +297,8 @@ public class Quick{
       }
       System.out.println();
     }
-  }
-*/
+  }*/
+
 /*  public static void main(String[] args){
     int[] ary = {10,1, 2, 40, 5, 10 , 20, 9, 1, 1, 1, 1};
     insertionSort(ary, 0, ary.length);
@@ -372,16 +376,16 @@ public class Quick{
 
   public static void main(String[]args){
     if(args.length < 2)return;
-    
+
     int size =  Integer.parseInt(args[0]);
     int type =   Integer.parseInt(args[1]);
 
     int [] start = makeArray(size,type);
     int [] result = Arrays.copyOf(start,start.length);
     Arrays.sort(result);
-    
+
     long startTime = System.currentTimeMillis();
-    
+
     quicksort(start);
 
     long elapsedTime = System.currentTimeMillis() - startTime;
